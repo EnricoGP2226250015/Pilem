@@ -69,22 +69,27 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: movies.length,
             itemBuilder: (context, index) {
               final Movie movie = movies[index];
-              return Column(
-                children: [
-                  Image.network(
-                    "${movie.posterPath}",
-                    height: 150,
-                    width: 100,
-                    fit: BoxFit.cover,
+              return GestureDetector(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      Image.network(
+                        "${movie.posterPath}",
+                        height: 150,
+                        width: 100,
+                        fit: BoxFit.cover,
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        movie.title,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Text(
-                    movie.title,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                ],
+                ),
               );
             },
           ),
